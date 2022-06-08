@@ -11,9 +11,11 @@ class AddComment extends React.Component {
 
     addComment() {
         const url = 'api/comments';
+        console.log(this.props.postId)
+        console.log(this.props.newText.current.value)
         const postData = {
             post_id: this.props.postId,
-            text: this.props.newText
+            text: this.props.newText.current.value
         }
         console.log('create ');
         fetch(url, {
@@ -24,6 +26,7 @@ class AddComment extends React.Component {
         .then(data => {
             //this needs to trigger post redraw
             console.log(data);
+            this.props.newText.current.value = '';
             this.props.refreshPost();
         })
         

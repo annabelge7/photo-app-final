@@ -8,21 +8,40 @@ class Post extends React.Component {
 
     constructor(props) {
         super(props);
-        this.textInput = React.createRef();
         this.state = {
-            post: props.model,
+            post: this.props.model,
             text: null
         }
+        this.textInput = React.createRef();
         this.focusTextinput = this.focusTextinput.bind(this);
         this.refreshPostDataFromServer = this.refreshPostDataFromServer.bind(this);
+        this.displayComment = this.displayComment.bind(this);
     }
 
     componentDidMount() {
-
     }
 
     focusTextinput(){
         this.textInput.current.focus();
+    }
+
+    displayComment(){
+        const post = this.state.post;
+        const i = post.comments.length - 1;
+        console.log(i);
+        console.log(post.comments[i])
+        if(i > -1){
+            return(
+                <div id="comment-section">
+                            <p> <strong>{ post.user.username }</strong> { post.caption }...<a>more</a></p>
+                            <p>{ post.display_time }</p>
+                            <p><a href="">View all {post.comments.length } comments</a></p>
+                            <p><strong> {post.comments[i].user.username} </strong> {post.comments[i].text} </p>
+                            <p>{post.comments[i].display_time }</p>
+    
+                        </div>
+            )
+        }
     }
 
     refreshPostDataFromServer() {
@@ -41,7 +60,6 @@ class Post extends React.Component {
     
     render () {
         const post = this.state.post;
-        const i = post.comments.length - 1;
         if (!post) {
             return (
                 <div></div>  
@@ -78,15 +96,15 @@ class Post extends React.Component {
                         </div>
                     </div>
                     <p> <strong>{post.likes.length} likes </strong></p>
-
-                    <div id="comment-section">
+                    {this.displayComment()}
+                    {/* <div id="comment-section">
                         <p> <strong>{ post.user.username }</strong> { post.caption }...<a>more</a></p>
                         <p>{ post.display_time }</p>
                         <p><a href="">View all {post.comments.length } comments</a></p>
-                        <p><strong> {post.comments[i].user.username}</strong> {post.comments[i].text} </p>
+                        <p><strong> {post.comments[i].user.username} </strong> {post.comments[i].text} </p>
                         <p>{post.comments[i].display_time }</p>
 
-                    </div>
+                    </div> */}
 
                     <div id = "add-comment-section">
                     <div className="comment-section-left">
