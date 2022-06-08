@@ -34,9 +34,9 @@ class Stories extends React.Component {
                 {
                     this.state.stories.map(story => {
                         return (
-                            <div className = "story">
+                            <div  key={'story-' + story.id} className = "story">
+                            <img className = "storypic" src={story.user.thumb_url} />
                             <p>{story.user.username}</p>
-                            <img src={story.user.thumb_url} />
                             </div>
                         )
                     })

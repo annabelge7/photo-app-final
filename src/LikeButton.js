@@ -23,32 +23,40 @@ class LikeButton extends React.Component {
 
     like() {
         const url = 'api/posts/likes/';
+        const postData = {
+            post_id: this.props.postId
+        }
         console.log('create like');
         fetch(url, {
             headers: getHeaders(), 
-            method: 'POST'
+            method: 'POST',
+            body: JSON.stringify(postData)
         }).then(response => response.json())
         .then(data => {
+            //this needs to trigger post redraw
             console.log(data);
+            this.props.refreshPost();
         })
         
-        // issue fetch request and then afterwards requery for the post:
-        // this.props.requeryPost();
     }
 
     unlike() {
         const url = 'api/posts/likes/' + this.props.likeId;
+        const postData = {
+            post_id: this.props.postId
+        }
         console.log('remove like');
         fetch(url, {
             headers: getHeaders(), 
-            method: 'DELETE'
+            method: 'DELETE',
+            body: JSON.stringify(postData)
         }).then(response => response.json())
         .then(data => {
+            //this needs to trigger post redraw
             console.log(data);
+            this.props.refreshPost();
         })
-        
         // issue fetch request and then afterwards requery for the post:
-        // this.props.requeryPost();
     }
 
     render () {

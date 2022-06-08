@@ -7,7 +7,8 @@ class Suggestions extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            suggestions: []
+            suggestions: [],
+            followingId: null
         }
         // initialization code here
         this.getSuggestionsFromServer()

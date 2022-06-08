@@ -41,24 +41,21 @@ class App extends React.Component {
 
             <aside>
                 <header>
-                    <Profile username={this.state.currentUser.username}/>
+                    <Profile username={this.state.currentUser.username} thumb_url = {this.state.currentUser.thumb_url}/>
                     {/* Profile Links */}
                 </header>
                 <div className="suggestions">
                     <p className="suggestion-text">Suggestions for you</p>
                     <div>
                         <Suggestions/>
-                        {/* Suggestions */}
                     </div>
                 </div>
             </aside>
 
             <main className="content">
-                <header className="stories">
                     <Stories/>
                     {/* Stories */}
-                </header>
-                <Posts/>
+                    <Posts/>
                     {/* Posts */}
             </main>
 

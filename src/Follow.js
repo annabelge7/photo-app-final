@@ -1,15 +1,14 @@
 import React from 'react';
 import {getHeaders} from './utils';
 
-class Suggestion extends React.Component {  
+class Follow extends React.Component {  
 
     constructor(props) {
         super(props);
         this.state = {
-            suggestion: this.props.model,
             followingId: null
         }
-
+        //binding "this" --> used for all member functions
         this.toggleFollow = this.toggleFollow.bind(this);
         this.follow = this.follow.bind(this);
         this.unfollow = this.unfollow.bind(this);
@@ -26,10 +25,9 @@ class Suggestion extends React.Component {
     }
 
     follow() {
-        const suggestion = this.state.suggestion;
         const url = 'api/following/';
         const postData = {
-            user_id : suggestion.id
+            user_id: this.props.userId,
         }
         console.log('create following');
         fetch(url, {
@@ -63,41 +61,19 @@ class Suggestion extends React.Component {
         })
     }
 
-    
     render () {
-        const suggestion = this.state.suggestion;
         const followClass = this.state.followingId ? "unfollow": "follow";
         const ariachecked = this.state.followingId ? true : false;
-        if (!suggestion) {
-            return (
-                <div></div>  
-            );
-        }
         return (
-        <div className="suggestion-item">
-            
-            <div className="suggestion-text">
-            <img src={suggestion.thumb_url} className="small-profile-pic" alt = ""/>
-                <div className = "small-text-suggestion">
-                    <p>{suggestion.username}</p>
-                    <p>suggested for you</p>
-                </div >
-
-            </div>
-            <div className="follow">
             <button role="switch"
-                className="unfollow" 
+                className="follow" 
                 aria-label="follow Button" 
                 aria-checked={ariachecked}
                 onClick={this.toggleFollow}>
                     {followClass}
             </button>
-             </div>
-        
-
-        </div>
-        );     
+        ) 
     }
 }
 
-export default Suggestion;
+export default Follow;
