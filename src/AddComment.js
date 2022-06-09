@@ -10,7 +10,7 @@ class AddComment extends React.Component {
     }
 
     addComment() {
-        const url = 'api/comments';
+        const url = 'https://photo-app-annabel-3.herokuapp.com/api/comments';
         console.log(this.props.postId)
         console.log(this.props.newText.current.value)
         const postData = {

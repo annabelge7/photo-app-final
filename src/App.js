@@ -19,7 +19,7 @@ class App extends React.Component {
     }
 
     getProfile() {
-        fetch('/api/profile', {
+        fetch('https://photo-app-annabel-3.herokuapp.com/api/profile', {
             headers: getHeaders()
         })  .then(response => response.json())
             .then(data => {

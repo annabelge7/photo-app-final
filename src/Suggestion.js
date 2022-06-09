@@ -27,7 +27,7 @@ class Suggestion extends React.Component {
 
     follow() {
         const suggestion = this.state.suggestion;
-        const url = 'api/following/';
+        const url = 'https://photo-app-annabel-3.herokuapp.com/api/following/';
         const postData = {
             user_id : suggestion.id
         }
@@ -48,7 +48,7 @@ class Suggestion extends React.Component {
     }
 
     unfollow() {
-        const url = 'api/following/' + this.state.followingId;
+        const url = 'https://photo-app-annabel-3.herokuapp.com/api/following/' + this.state.followingId;
    
         console.log('remove follow');
         fetch(url, {

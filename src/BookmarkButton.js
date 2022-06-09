@@ -22,7 +22,7 @@ class BookmarkButton extends React.Component {
     }
 
     bookmark() {
-        const url = 'api/bookmarks';
+        const url = 'https://photo-app-annabel-3.herokuapp.com/api/bookmarks';
         const postData = {
             post_id: this.props.postId
         }

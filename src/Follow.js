@@ -25,7 +25,7 @@ class Follow extends React.Component {
     }
 
     follow() {
-        const url = 'api/following/';
+        const url = 'https://photo-app-annabel-3.herokuapp.com/api/following/';
         const postData = {
             user_id: this.props.userId,
         }
@@ -46,7 +46,7 @@ class Follow extends React.Component {
     }
 
     unfollow() {
-        const url = 'api/following/' + this.state.followingId;
+        const url = 'https://photo-app-annabel-3.herokuapp.com/api/following/' + this.state.followingId;
    
         console.log('remove follow');
         fetch(url, {

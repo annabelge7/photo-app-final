@@ -22,7 +22,7 @@ class LikeButton extends React.Component {
     }
 
     like() {
-        const url = 'api/posts/likes/';
+        const url = 'https://photo-app-annabel-3.herokuapp.com/api/posts/likes/';
         const postData = {
             post_id: this.props.postId
         }
@@ -41,7 +41,7 @@ class LikeButton extends React.Component {
     }
 
     unlike() {
-        const url = 'api/posts/likes/' + this.props.likeId;
+        const url = 'https://photo-app-annabel-3.herokuapp.com/api/posts/likes/' + this.props.likeId;
         const postData = {
             post_id: this.props.postId
         }
